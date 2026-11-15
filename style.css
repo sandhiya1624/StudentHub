@@ -1,0 +1,650 @@
+/* ================================================================
+   STUDENT MANAGEMENT SYSTEM — style.css
+   Clean Blue & White Theme | Responsive | Vanilla CSS
+   ================================================================ */
+
+/* ----------------------------------------------------------------
+   1. CSS CUSTOM PROPERTIES (Variables)
+   These let us change colours in ONE place and have them update
+   everywhere. Think of them like constants in JavaScript.
+   ---------------------------------------------------------------- */
+:root {
+  /* Primary blues */
+  --primary-blue:   #1565C0;   /* deep rich blue — main actions */
+  --primary-dark:   #0D47A1;   /* darker blue — hover states */
+  --primary-light:  #1976D2;   /* medium blue */
+  --accent-blue:    #42A5F5;   /* light accent blue */
+  --sky-light:      #E3F2FD;   /* very pale blue — backgrounds */
+
+  /* Neutrals */
+  --bg-page:        #F0F4F8;   /* page background */
+  --card-bg:        #FFFFFF;   /* card / section backgrounds */
+  --border-color:   #BBDEFB;   /* soft blue-tinted borders */
+  --text-main:      #1A237E;   /* dark blue-ish heading text */
+  --text-body:      #37474F;   /* body text */
+  --text-muted:     #78909C;   /* placeholder / muted text */
+
+  /* Semantic colours */
+  --success:        #2E7D32;
+  --success-light:  #E8F5E9;
+  --danger:         #C62828;
+  --danger-light:   #FFEBEE;
+  --warning:        #E65100;
+  --warning-light:  #FFF3E0;
+
+  /* Sizing & rounding */
+  --radius-sm:      6px;
+  --radius-md:      12px;
+  --radius-lg:      20px;
+
+  /* Shadows */
+  --shadow-sm:      0 2px 8px rgba(21, 101, 192, 0.10);
+  --shadow-md:      0 4px 20px rgba(21, 101, 192, 0.15);
+  --shadow-lg:      0 8px 32px rgba(21, 101, 192, 0.20);
+
+  /* Transition speed */
+  --transition:     0.25s ease;
+}
+
+/* ----------------------------------------------------------------
+   2. RESET & BASE STYLES
+   Remove browser defaults so we start with a clean slate.
+   ---------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;   /* padding/border no longer expands width */
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;  /* smooth scroll when jumping to anchors */
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-body);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ----------------------------------------------------------------
+   3. HEADER
+   ---------------------------------------------------------------- */
+.header {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+  color: #fff;
+  padding: 0 24px;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;  /* stays above other content when scrolling */
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  gap: 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo-icon {
+  font-size: 2.4rem;
+  line-height: 1;
+}
+
+.logo-text h1 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.logo-text p {
+  font-size: 0.75rem;
+  opacity: 0.80;
+  margin-top: 2px;
+}
+
+.header-stats {
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.30);
+  border-radius: var(--radius-lg);
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ----------------------------------------------------------------
+   4. MAIN CONTAINER
+   ---------------------------------------------------------------- */
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ----------------------------------------------------------------
+   5. DASHBOARD STAT CARDS
+   ---------------------------------------------------------------- */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* 3 equal columns */
+  gap: 20px;
+}
+
+.stat-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);   /* subtle lift on hover */
+  box-shadow: var(--shadow-md);
+}
+
+.stat-icon {
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+/* ----------------------------------------------------------------
+   6. SECTION SHARED STYLES
+   ---------------------------------------------------------------- */
+.form-section,
+.records-section {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: 28px 32px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+}
+
+.section-header {
+  margin-bottom: 24px;
+  border-bottom: 2px solid var(--sky-light);
+  padding-bottom: 14px;
+}
+
+.section-header h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.section-header p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ----------------------------------------------------------------
+   7. REGISTRATION FORM
+   ---------------------------------------------------------------- */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* 2-column layout */
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.required {
+  color: var(--danger);
+  margin-left: 2px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  color: var(--text-body);
+  background: var(--sky-light);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+
+/* Focus ring for accessibility and UX clarity */
+.form-group input:focus {
+  border-color: var(--primary-blue);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.15);
+}
+
+/* Visual error state applied by JavaScript */
+.form-group input.input-error {
+  border-color: var(--danger);
+  background: var(--danger-light);
+}
+
+.field-error {
+  font-size: 0.78rem;
+  color: var(--danger);
+  min-height: 16px;  /* reserve space so layout doesn't jump */
+}
+
+/* Form buttons */
+.form-actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* ----------------------------------------------------------------
+   8. BUTTONS
+   ---------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 24px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.90rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition),
+              box-shadow var(--transition);
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: scale(0.97);  /* tiny click feedback */
+}
+
+/* Primary — blue */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-light));
+  color: #fff;
+  box-shadow: 0 3px 12px rgba(21, 101, 192, 0.35);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+  box-shadow: 0 5px 18px rgba(21, 101, 192, 0.45);
+}
+
+/* Secondary — outlined */
+.btn-secondary {
+  background: transparent;
+  color: var(--text-muted);
+  border: 2px solid var(--border-color);
+}
+.btn-secondary:hover {
+  background: var(--sky-light);
+  color: var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+
+/* Edit button in table */
+.btn-edit {
+  background: var(--warning-light);
+  color: var(--warning);
+  border: 1px solid #FFCC80;
+  padding: 6px 14px;
+  font-size: 0.80rem;
+  border-radius: var(--radius-sm);
+}
+.btn-edit:hover {
+  background: #FFE0B2;
+}
+
+/* Delete button in table */
+.btn-delete {
+  background: var(--danger-light);
+  color: var(--danger);
+  border: 1px solid #FFCDD2;
+  padding: 6px 14px;
+  font-size: 0.80rem;
+  border-radius: var(--radius-sm);
+}
+.btn-delete:hover {
+  background: #FFCDD2;
+}
+
+/* ----------------------------------------------------------------
+   9. RECORDS HEADER (title + search side-by-side)
+   ---------------------------------------------------------------- */
+.records-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.search-wrapper {
+  position: relative;
+  flex: 1;
+  max-width: 340px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  pointer-events: none;   /* so clicks pass through to the input */
+}
+
+#searchInput {
+  width: 100%;
+  padding: 9px 14px 9px 36px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  font-size: 0.88rem;
+  background: var(--sky-light);
+  color: var(--text-body);
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+#searchInput:focus {
+  border-color: var(--primary-blue);
+  background: #fff;
+}
+
+/* ----------------------------------------------------------------
+   10. DATA TABLE
+   ---------------------------------------------------------------- */
+.table-wrapper {
+  overflow-x: auto;   /* horizontal scroll on small screens */
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  margin-top: 4px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+thead {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+  color: #fff;
+}
+
+thead th {
+  padding: 13px 16px;
+  text-align: left;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--sky-light);
+  transition: background var(--transition);
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: var(--sky-light);  /* highlight on hover */
+}
+
+tbody td {
+  padding: 13px 16px;
+  color: var(--text-body);
+  vertical-align: middle;
+}
+
+/* Serial number column */
+tbody td:first-child {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.80rem;
+}
+
+/* Student ID badge */
+.id-badge {
+  display: inline-block;
+  background: var(--sky-light);
+  color: var(--primary-blue);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Course badge */
+.course-badge {
+  display: inline-block;
+  background: #EDE7F6;
+  color: #4527A0;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* Action buttons container */
+.action-btns {
+  display: flex;
+  gap: 8px;
+}
+
+/* ----------------------------------------------------------------
+   11. EMPTY STATE MESSAGE
+   ---------------------------------------------------------------- */
+.empty-state {
+  text-align: center;
+  padding: 56px 20px;
+  display: none;   /* hidden by default; JS shows it when needed */
+}
+
+.empty-state.show {
+  display: block;
+}
+
+.empty-icon {
+  font-size: 3.5rem;
+  margin-bottom: 14px;
+}
+
+.empty-state h3 {
+  font-size: 1.15rem;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.empty-state p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+/* ----------------------------------------------------------------
+   12. TOAST NOTIFICATION
+   ---------------------------------------------------------------- */
+.toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  min-width: 260px;
+  max-width: 380px;
+  padding: 14px 20px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.90rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-lg);
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(20px);   /* start position: slightly below */
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* Slide-in animation class toggled by JS */
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.toast.success {
+  background: var(--success-light);
+  color: var(--success);
+  border-left: 4px solid var(--success);
+}
+
+.toast.error {
+  background: var(--danger-light);
+  color: var(--danger);
+  border-left: 4px solid var(--danger);
+}
+
+.toast-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* ----------------------------------------------------------------
+   13. FOOTER
+   ---------------------------------------------------------------- */
+.footer {
+  background: var(--primary-dark);
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  padding: 20px;
+  font-size: 0.82rem;
+  margin-top: auto;
+}
+
+.footer span {
+  color: #EF9A9A;  /* red heart */
+}
+
+/* ----------------------------------------------------------------
+   14. RESPONSIVE — Tablet  (max-width: 768px)
+   ---------------------------------------------------------------- */
+@media (max-width: 768px) {
+
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 0;
+  }
+
+  .stats-row {
+    grid-template-columns: 1fr;  /* stack cards vertically */
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;  /* single-column form */
+  }
+
+  .form-section,
+  .records-section {
+    padding: 20px 18px;
+  }
+
+  .records-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-wrapper {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/* ----------------------------------------------------------------
+   15. RESPONSIVE — Mobile  (max-width: 480px)
+   ---------------------------------------------------------------- */
+@media (max-width: 480px) {
+
+  .logo-text h1 {
+    font-size: 1.05rem;
+  }
+
+  .stat-card {
+    padding: 16px;
+  }
+
+  .stat-number {
+    font-size: 1.6rem;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .toast {
+    left: 16px;
+    right: 16px;
+    min-width: unset;
+    bottom: 16px;
+  }
+}
